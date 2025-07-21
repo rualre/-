@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Volvamos a intentarlo, mi amor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #686365, #ffffff);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      margin-top: 15%;
+      font-size: 3em;
+      color: #fff;
+      text-shadow: 2px 2px rgb(177, 117, 137);
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yes {
+      background-color: #ff40804b;
+      color: white;
+    }
+
+    #no {
+      background-color: #f8bbd0;
+      color: #880e4f49;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .floating-photo {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: float 12s infinite linear;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🩶 Lo Volvemos a intentar, mi amor ? 🩶</h1>
+
+  <div class="buttons">
+    <button id="yes">Sí 🐣</button>
+    <button id="no">No</button>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+
+    yesBtn.addEventListener("click", () => {
+      alert("Sabía que dirías que sí, Eres el amor de mi vida mi chiquita hermosa.");
+    });
+
+    noBtn.addEventListener("click", () => {
+      const segura = confirm("¿Segura que no? ");
+      if (segura) {
+        alert("Entonces sí, Sabia que tu respuesta era si ");
+      }
+    });
+
+    const fotos = [
+    "/foto 1.jpg",
+    "/foto 2.jpg",
+    "/foto 3.jpg",
+    "/foto 4.jpg",
+    "/foto 5.jpg",
+    "/foto 6.jpg",
+    "/foto 7.jpg",
+    "/foto 8.jpg",
+    "/foto 9.jpg",
+    "/foto 10.jpg",
+    "/foto 11.jpg",
+    "/foto 12.jpg"
+  ];
+
+  function crearFotoFlotante() {
+    const foto = document.createElement("div");
+    foto.classList.add("floating-photo");
+    const url = fotos[Math.floor(Math.random() * fotos.length)];
+    foto.style.backgroundImage = `url('${url}')`;
+    foto.style.left = Math.random() * 100 + "vw";
+    foto.style.animationDuration = (6 + Math.random() * 6) + "s";
+    document.body.appendChild(foto);
+
+    setTimeout(() => {
+      foto.remove();
+    }, 12000);
+  }
+
+  setInterval(crearFotoFlotante, 500);
+  </script>
+</body>
+</html>
