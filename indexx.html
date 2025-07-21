@@ -4,32 +4,37 @@
   <meta charset="UTF-8">
   <title>Volvamos a intentarlo, mi amor</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(120deg, #686365, #ffffff);
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      text-align: center;
+      width: 100vw;
       height: 100vh;
       overflow: hidden;
+      background: linear-gradient(120deg, #686365, #70b6ad);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
       position: relative;
     }
 
     h1 {
-      margin-top: 15%;
-      font-size: 3em;
-      color: #fff;
-      text-shadow: 2px 2px rgb(177, 117, 137);
+      margin-top: 8%;
+      font-size: 6vw;
+      color: #ff8fab;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      z-index: 2;
+      position: relative;
     }
 
     .buttons {
       margin-top: 30px;
+      z-index: 2;
+      position: relative;
     }
 
     button {
       padding: 15px 30px;
       margin: 10px;
-      font-size: 1.2em;
+      font-size: 6.6em;
       border: none;
       border-radius: 25px;
       cursor: pointer;
@@ -37,13 +42,13 @@
     }
 
     #yes {
-      background-color: #ff40804b;
+      background-color: #ff4080bb;
       color: white;
     }
 
     #no {
       background-color: #f8bbd0;
-      color: #880e4f49;
+      color: #880e4f;
     }
 
     button:hover {
@@ -52,14 +57,15 @@
 
     .floating-photo {
       position: absolute;
-      width: 100px;
-      height: 100px;
+      width: 380px;
+      height: 390px;
       background-size: cover;
       background-position: center;
       border-radius: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       animation: float 12s infinite linear;
-      opacity: 0.8;
+      opacity: 0.9;
+      z-index: 1;
     }
 
     @keyframes float {
@@ -78,7 +84,9 @@
   </style>
 </head>
 <body>
-  <h1>🩶 Lo Volvemos a intentar, mi amor ? 🩶</h1>
+  <h1 style="font-size: 7.6em; color: #ff8fab; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+    🩶 ¿Lo Volvemos a intentar, mi amor? 🩶</h1>
+   
 
   <div class="buttons">
     <button id="yes">Sí 🐣</button>
@@ -96,40 +104,41 @@
     noBtn.addEventListener("click", () => {
       const segura = confirm("¿Segura que no? ");
       if (segura) {
-        alert("Entonces sí, Sabia que tu respuesta era si ");
+        alert("Entonces sí, Sabía que tu respuesta era sí ❤️");
       }
     });
 
+    // Reemplaza estos nombres por los nombres reales de tus imágenes
     const fotos = [
-    "/foto1.jpg",
-    "/foto2.jpg",
-    "/foto3.jpg",
-    "/foto4.jpg",
-    "/foto5.jpg",
-    "/foto6.jpg",
-    "/foto7.jpg",
-    "/foto8.jpg",
-    "/foto9.jpg",
-    "/foto10.jpg",
-    "/foto11.jpg",
-    "/foto12.jpg"
-  ];
+      "foto1.jpg",
+      "foto2.jpg",
+      "foto3.jpg",
+      "foto4.jpg",
+      "foto5.jpg",
+      "foto6.jpg",
+      "foto7.jpg",
+      "foto8.jpg",
+      "foto9.jpg",
+      "foto10.jpg",
+      "foto11.jpg",
+      "foto12.jpg"
+    ];
 
-  function crearFotoFlotante() {
-    const foto = document.createElement("div");
-    foto.classList.add("floating-photo");
-    const url = fotos[Math.floor(Math.random() * fotos.length)];
-    foto.style.backgroundImage = `url('${url}')`;
-    foto.style.left = Math.random() * 100 + "vw";
-    foto.style.animationDuration = (6 + Math.random() * 6) + "s";
-    document.body.appendChild(foto);
+    function crearFotoFlotante() {
+      const foto = document.createElement("div");
+      foto.classList.add("floating-photo");
+      const url = fotos[Math.floor(Math.random() * fotos.length)];
+      foto.style.backgroundImage = `url('${url}')`;
+      foto.style.left = Math.random() * 100 + "vw";
+      foto.style.animationDuration = (6 + Math.random() * 6) + "s";
+      document.body.appendChild(foto);
 
-    setTimeout(() => {
-      foto.remove();
-    }, 12000);
-  }
+      setTimeout(() => {
+        foto.remove();
+      }, 12000);
+    }
 
-  setInterval(crearFotoFlotante, 500);
+    setInterval(crearFotoFlotante, 500);
   </script>
 </body>
 </html>
