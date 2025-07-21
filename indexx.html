@@ -10,7 +10,7 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      background: linear-gradient(120deg, #686365, #70b6ad);
+      background: linear-gradient(120deg, #686365, #383b3b);
       font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
       position: relative;
@@ -18,7 +18,7 @@
 
     h1 {
       margin-top: 8%;
-      font-size: 6vw;
+      font-size: 7vw;
       color: #ff8fab;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
       z-index: 2;
@@ -34,7 +34,7 @@
     button {
       padding: 15px 30px;
       margin: 10px;
-      font-size: 6.6em;
+      font-size: 6vw;
       border: none;
       border-radius: 25px;
       cursor: pointer;
@@ -57,13 +57,13 @@
 
     .floating-photo {
       position: absolute;
-      width: 380px;
-      height: 390px;
+      width: 280px;
+      height: 340px;
       background-size: cover;
       background-position: center;
       border-radius: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      animation: float 12s infinite linear;
+      animation: float 12s linear;
       opacity: 0.9;
       z-index: 1;
     }
@@ -84,13 +84,11 @@
   </style>
 </head>
 <body>
-  <h1 style="font-size: 7.6em; color: #ff8fab; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
-    🩶 ¿Lo Volvemos a intentar, mi amor? 🩶</h1>
-   
+  <h1 style="font-size: 7.1em; color: #ff8fab; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">🩶¿Lo Volvemos a intentar, Amor de mi vida? 🩶</h1>
 
   <div class="buttons">
     <button id="yes">Sí 🐣</button>
-    <button id="no">No</button>
+    <button id="no">No 💔</button>
   </div>
 
   <script>
@@ -104,33 +102,40 @@
     noBtn.addEventListener("click", () => {
       const segura = confirm("¿Segura que no? ");
       if (segura) {
-        alert("Entonces sí, Sabía que tu respuesta era sí ❤️");
+        alert("Entonces sí, Sabía que tu respuesta era sí.");
       }
     });
 
-    // Reemplaza estos nombres por los nombres reales de tus imágenes
+    // Lista de imágenes que tienes localmente (en la misma carpeta)
     const fotos = [
       "foto1.jpg",
       "foto2.jpg",
       "foto3.jpg",
-      "foto4.jpg",
       "foto5.jpg",
       "foto6.jpg",
       "foto7.jpg",
       "foto8.jpg",
       "foto9.jpg",
-      "foto10.jpg",
       "foto11.jpg",
       "foto12.jpg"
     ];
 
+    let fotosRestantes = [...fotos]; // Copia temporal
+
     function crearFotoFlotante() {
+      if (fotosRestantes.length === 0) {
+        fotosRestantes = [...fotos]; // Reinicia cuando se acaban
+      }
+
+      const index = Math.floor(Math.random() * fotosRestantes.length);
+      const fotoSeleccionada = fotosRestantes.splice(index, 1)[0];
+
       const foto = document.createElement("div");
       foto.classList.add("floating-photo");
-      const url = fotos[Math.floor(Math.random() * fotos.length)];
-      foto.style.backgroundImage = `url('${url}')`;
+      foto.style.backgroundImage = `url('${fotoSeleccionada}')`;
       foto.style.left = Math.random() * 100 + "vw";
       foto.style.animationDuration = (6 + Math.random() * 6) + "s";
+
       document.body.appendChild(foto);
 
       setTimeout(() => {
@@ -138,7 +143,8 @@
       }, 12000);
     }
 
-    setInterval(crearFotoFlotante, 500);
+    // Una imagen cada 2,8 segundos
+    setInterval(crearFotoFlotante, 2100);
   </script>
 </body>
 </html>
